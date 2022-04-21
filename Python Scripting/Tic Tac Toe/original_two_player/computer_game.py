@@ -1,0 +1,2 @@
+class SmartAI:
+    pass
