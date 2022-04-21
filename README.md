@@ -1,4 +1,6 @@
 # Portfolio-Project
 
 1. Web Scraping (Google Map)
-2. Python Automation (Currency API + Twilio SMS)
+2. Daily Currency API + Twilio SMS (Python Automation)
+3. Convert Text to Morse and back (Python Scripting - Tool)
+4. Tic Tac Toe (Python Scripting - Game)

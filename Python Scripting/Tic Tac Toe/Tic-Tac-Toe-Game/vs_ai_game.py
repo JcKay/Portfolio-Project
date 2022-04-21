@@ -28,7 +28,7 @@ class SmartAI:
             for key in self.board.keys():
                 if self.board[key] == " ":
                     self.board[key] = self.ai
-                    value = self.minimax(self.board, depth + 1, False)
+                    value = self.minimax(self.board, 0, False)
                     bestVal = max(bestVal, value)
                     self.board[key] = " "
             return bestVal
@@ -63,11 +63,11 @@ class SmartAI:
 
         print(f"AI move position for X: {bestMove}")
         make_move = MakeMove(board=self.board)
-        make_move.insertPlace(letter=self.ai, position=bestMove, x_name=self.ai_name, o_name=self.player_name)
-        return
+        return make_move.insertPlace(letter=self.ai, position=bestMove, x_name=self.ai_name, o_name=self.player_name)
+
 
     def playerMove(self):
         position = int(input(f"Enter position for {self.player}: "))
         make_move = MakeMove(board=self.board)
-        make_move.insertPlace(letter=self.player, position=position, x_name=self.ai_name, o_name=self.player_name)
-        return
+        return make_move.insertPlace(letter=self.player, position=position, x_name=self.ai_name, o_name=self.player_name)
+

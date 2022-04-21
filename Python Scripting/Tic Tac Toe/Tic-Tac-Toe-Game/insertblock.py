@@ -16,21 +16,24 @@ class MakeMove:
     def insertPlace(self, letter, position, x_name, o_name):
         if self.spaceIsFree(position):
             self.board[position] = letter
-            print("\n")  # seperater
+            print("\n")  # seperate
             ShowBoard.printBoard(self.board)
             if CheckGame.checkForWin(self.board):
                 if letter == "X":
                     print(f'{x_name} Wins!')
-                    exit()
+                    return False
+
                 else:
                     print(f'{o_name} Wins!')
-                    exit()
+                    return False
+
             if CheckGame.checkDraw(self.board):
                 print('Draw Game')
-                exit()
-            return
+                return False
+
+            return True
         else:
             position = int(
                 input('This square is not blank\nChoose another number: '))
-            self.insertPlace(letter, position)
+            self.insertPlace(letter, position, x_name, o_name)
             return
