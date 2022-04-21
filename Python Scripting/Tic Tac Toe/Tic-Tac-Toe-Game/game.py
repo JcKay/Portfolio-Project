@@ -1,6 +1,9 @@
+import random
+
 from two_player_game import TwoPlayer
 from vs_ai_game import SmartAI
 from game_board import ShowBoard
+from insertblock import MakeMove
 
 # Variables
 exampleboard = {n: n for n in range(1, 10)}
@@ -15,6 +18,7 @@ def exampleBoard():
     ShowBoard.printBoard(exampleboard)
 
 
+###     WITH HUMAN PLAY
 def game_mode_player():
     name1 = input('Player One Name: ')
     name2 = input('Player Two Name: ')
@@ -23,7 +27,6 @@ def game_mode_player():
 
     # Game codes (Two players)
     game_type = TwoPlayer(name1=name1, name2=name2, board=playboard)
-    # while not CheckGame.checkForWin(game_type.board):
     while OnGoing:
         OnGoing = game_type.player1Move()
         if OnGoing == True:
@@ -34,7 +37,11 @@ def game_mode_player():
             return question()
 
 
+###     WITH AI PLAY
 def game_mode_ai():
+    makemove = MakeMove(board=play_board)
+    winner = makemove.winner
+
     name1 = input('Player Name: ')
     print("AI name is: QuantumAI")
     OnGoing = True
@@ -42,21 +49,70 @@ def game_mode_ai():
 
     # Game codes vs AI
     game_type = SmartAI(name1=name1, board=playboard)
-    # while not CheckGame.checkForWin(board=game_type.board):
-    while OnGoing:
-        OnGoing = game_type.aiMove()
-        if OnGoing == True:
+
+    ## Change
+    if winner == "QuantumAI":
+        while OnGoing:
             OnGoing = game_type.playerMove()
-            if OnGoing == False:
+            if OnGoing == True:
+                OnGoing = game_type.aiMove()
+                if OnGoing == False:
+                    return question()
+            else:
                 return question()
+    elif winner == "draw":
+        choice = random.choice(['ai', 'player'])
+        if choice == 'ai':
+            while OnGoing:
+                OnGoing = game_type.aiMove()
+                if OnGoing == True:
+                    OnGoing = game_type.playerMove()
+                    if OnGoing == False:
+                        return question()
+                else:
+                    return question()
+
         else:
-            return question()
+            while OnGoing:
+                OnGoing = game_type.playerMove()
+                if OnGoing == True:
+                    OnGoing = game_type.aiMove()
+                    if OnGoing == False:
+                        return question()
+                else:
+                    return question()
+
+    else:
+        while OnGoing:
+            OnGoing = game_type.aiMove()
+            if OnGoing == True:
+                OnGoing = game_type.playerMove()
+                if OnGoing == False:
+                    return question()
+            else:
+                return question()
+
+    # ## PREVIOUS CODE
+    # if winner == "QuantumAI":  # winner AI, go player
+    #     game_battle(game_type.playerMove(), game_type.aiMove())
+    #
+    # elif winner == "draw":  # Draw ? random choice
+    #     choice = random.choice(['ai', 'player'])
+    #     if choice == 'ai':
+    #         game_battle(game_type.aiMove(), game_type.playerMove())
+    #     else:
+    #         game_battle(game_type.playerMove(), game_type.aiMove())
+    #
+    # else:  # winner player, go AI
+    #     game_battle(game_type.aiMove(), game_type.playerMove())
+    #
 
 
 def question():
     global playboard
     print("")
     ask = input("Type any key to play again.\nIf not type 'exit' > ")
+    print('')
     if ask == "exit":
         return False
     else:

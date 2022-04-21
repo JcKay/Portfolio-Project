@@ -6,6 +6,7 @@ class MakeMove:
 
     def __init__(self, board):
         self.board = board
+        self.winner = 'draw'
 
     def spaceIsFree(self, position):
         if self.board[position] == " ":
@@ -21,14 +22,17 @@ class MakeMove:
             if CheckGame.checkForWin(self.board):
                 if letter == "X":
                     print(f'{x_name} Wins!')
+                    self.winner = x_name
                     return False
 
                 else:
                     print(f'{o_name} Wins!')
+                    self.winner = o_name
                     return False
 
             if CheckGame.checkDraw(self.board):
                 print('Draw Game')
+                self.winner = "draw"
                 return False
 
             return True
