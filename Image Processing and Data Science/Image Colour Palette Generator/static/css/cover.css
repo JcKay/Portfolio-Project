@@ -1,0 +1,51 @@
+/*
+ * Globals
+ */
+
+
+/* Custom default button */
+.colors_container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+    white-space: pre-wrap;
+}
+
+
+/*
+ * Base structure
+ */
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1910&q=80')
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+.main-block {
+    margin-top: 50%
+}
+
+.main-block-non {
+    margin-top: 20%;
+}
+
+
+.container {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+img {
+    margin-top: 5%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+

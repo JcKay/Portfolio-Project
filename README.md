@@ -6,3 +6,4 @@
 4. Tic Tac Toe (Python Scripting - Game)
 5. Convert PDF to Audiobook (Python Scripting - Tool)
 6. New York Stations (HTTP Requests & API)
+7. Image Color Palette Generator (Tool)
