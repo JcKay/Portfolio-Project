@@ -1,4 +1,5 @@
 # README
 
-Currency Exchange Code and Daily BTC , ETH Price
-send from Twillo Everyday.
+- Requests and APIs
+- Exchange currency
+- Twilio SMS

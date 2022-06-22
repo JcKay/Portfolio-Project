@@ -7,3 +7,4 @@
 5. Convert PDF to Audiobook (Python Scripting - Tool)
 6. New York Stations (HTTP Requests & API)
 7. Image Color Palette Generator (Tool)
+8. Coffee and Wifi Website (Web Development)
