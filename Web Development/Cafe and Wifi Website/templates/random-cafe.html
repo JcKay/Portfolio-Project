@@ -1,0 +1,59 @@
+{% include "header.html" %}
+
+<div class="container container-cafe">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="cafes-h1">Random Cafe</h1>
+            <form id="csearch-form" class="contactForm" action="{{ url_for('tsp_search') }}" method="post">
+                <!-- Email input -->
+                <div class="search-form">
+                    <input style="float: left" name="csearch" type="search" id="csearch" class="form-control"
+                           placeholder="Township Search"/>
+                    <button style="visibility: hidden;" type="submit" class="btn btn-light btn-md"></button>
+                </div>
+            </form>
+            <a id="random-cafe" class="btn btn-light btn-md" href="{{ url_for('get_random') }}">Random</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Map URL</th>
+                    <th>Address</th>
+                    <th>Township</th>
+                    <th>City</th>
+                    <th>Seats</th>
+                    <th>Wifi</th>
+                    <th>Sockets</th>
+                    <th>Workable</th>
+                    <th>Restroom</th>
+                    <th>Cards</th>
+                    <th>Coffee Price</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                    <td><strong>{{ cafe.name }}</strong></td>
+                    <td><a href="{{ cafe.map_url }}">Maps Link</a></td>
+                    <td>{{ cafe.address }}</td>
+                    <td>{{ cafe.township }}</td>
+                    <td>{{ cafe.city }}</td>
+                    <td>{{ cafe.seats }}</td>
+                    <td>{{ cafe.wifi }}</td>
+                    <td>{{ cafe.sockets }}</td>
+                    <td>{{ cafe.can_take_calls }}</td>
+                    <td>{{ cafe.restroom }}</td>
+                    <td>{{ cafe.cards }}</td>
+                    <td>{{ cafe.coffee_price }}</td>
+
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+{% include "footer.html" %}

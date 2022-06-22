@@ -1,0 +1,74 @@
+{% include "header.html" %}
+
+<div class="container container-cafe">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="cafes-h1">{{ user.username }}</h1>
+            {% if user.user_admin %}
+            <h4 id="show-admin">( ADMIN )</h4>
+            {% endif %}
+            <a id="delete-a" class="btn btn-light btn-md" href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a>
+            {% if not user.user_admin %}
+            <a id="upgrade-a" class="btn btn-light btn-md" href="{{ url_for('upgrade_user', user_id=user.id) }}">Upgrade</a>
+            {% else %}
+            <a id="downgrade-a" class="btn btn-light btn-md" href="{{ url_for('downgrade_user', user_id=user.id) }}">Downgrade</a>
+            {% endif %}
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Map URL</th>
+                    <th>Address</th>
+                    <th>Township</th>
+                    <th>City</th>
+                    <th>Seats</th>
+                    <th>Wifi</th>
+                    <th>Sockets</th>
+                    <th>Workable</th>
+                    <th>Restroom</th>
+                    <th>Cards</th>
+                    <th>Coffee Price</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cafe in cafes %}
+                <tr>
+
+                    <td><strong>{{ cafe.name }}</strong></td>
+                    <td><a href="{{ cafe.map_url }}">Maps Link</a></td>
+                    <td>{{ cafe.address }}</td>
+                    <td>{{ cafe.township }}</td>
+                    <td>{{ cafe.city }}</td>
+                    <td>{{ cafe.seats }}</td>
+                    <td>{{ cafe.wifi }}</td>
+                    <td>{{ cafe.sockets }}</td>
+                    <td>{{ cafe.can_take_calls }}</td>
+                    <td>{{ cafe.restroom }}</td>
+                    <td>{{ cafe.cards }}</td>
+                    <td>{{ cafe.coffee_price }}</td>
+                    <td>
+                        {% if current_user.is_authenticated and current_user.id == cafe.user_id or current_user.user_admin %}
+                        <a class="btn btn-info btn-sm" href="{{ url_for('edit_cafe', cafe_id=cafe.id) }}">Edit</a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if current_user.is_authenticated and current_user.id == cafe.user_id or current_user.user_admin %}
+                        <a class="btn btn-info btn-sm" href="{{ url_for('delete_cafe', cafe_id=cafe.id) }}">Delete</a>
+                        {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+{% include "footer.html" %}

@@ -1,0 +1,35 @@
+{% include "header.html" %}
+
+<h1 class="login-h1">Login</h1>
+<hr style="width:200px; margin-left: auto; margin-right: auto;">
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p class="flash-p">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form class="contactForm justify-content-center" action="{{ url_for('login') }}" method="post">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="loginName">Email address</label>
+        <input name="email" type="email" id="loginName" class="form-control" placeholder="someone@gmail.com"/>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="loginPassword">Password</label>
+        <input name="password" type="password" id="loginPassword" class="form-control" placeholder="password"/>
+    </div>
+
+    <!--    Submit Button-->
+    <button type="submit" class="btn btn-yellow btn-block mb-4">Sign in</button>
+
+</form>
+    <!--    Register -->
+    <div class="text-center">
+        <p>Not a member? <a href="{{ url_for('register') }}">Register</a></p>
+    </div>
+
+
+{% include "footer.html" %}

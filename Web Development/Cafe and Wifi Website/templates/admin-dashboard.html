@@ -1,0 +1,77 @@
+{% include "header.html" %}
+
+<!--     UNAUTHORIZED        -->
+{% if auth_req %}
+<h1 class="contact-h1">Forbidden</h1>
+<p class="lead flash-p">This place doesn't belong to YOU.</p>
+
+{% else %}
+<!--     AUTHORIZED        -->
+<div class="container container-cafe">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="cafes-h1">Admin Dashboard</h1>
+            <form id="csearch-form" class="contactForm" action="{{ url_for('user_search') }}" role="search">
+                <!-- Email input -->
+                <div class="search-form">
+                    <input style="float: left" name="Username" type="search" id="csearch" class="form-control"
+                           placeholder="Username Search"/>
+                    <button style="visibility: hidden;" type="submit" class="btn btn-light btn-md"></button>
+                </div>
+            </form>
+            <a id="random-cafe" class="btn btn-light btn-md" href="{{ url_for('admin_access_cafes') }}">CAFEs</a>
+            <table class="table">
+                <thead>
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                    <th>Detail</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                <tr>
+
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.user_admin }}</td>
+                    <!--       BUTTON PATH          -->
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{{ url_for('user_detail', user_id=user.id) }}">Detail</a>
+                    </td>
+
+                    <!--                    UPGRADE AND DOWNGRADE FEATURE           -->
+                    {% if not user.user_admin %}
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{{ url_for('upgrade_user', user_id=user.id) }}">Upgrade</a>
+                    </td>
+                    {% else %}
+                    <td>
+                        <a class="btn btn-info btn-sm"
+                           href="{{ url_for('downgrade_user', user_id=user.id) }}">Downgrade</a>
+                    </td>
+                    {% endif %}
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% include "footer.html" %}

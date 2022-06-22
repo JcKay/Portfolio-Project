@@ -1,0 +1,16 @@
+{% include "header.html" %}
+
+<div class="text-center" id="cities">
+    <div class="container">
+        <h1 class="login-h1">All Cities</h1>
+        <hr style="width:200px; margin-left: auto; margin-right: auto;">
+        <section>
+            <h2>MYANMAR</h2>
+            <a class="btn btn-light btn-lg" href="{{ url_for('get_city', city_name='Yangon') }}">Yangon</a>
+<!--            <a class="btn btn-light btn-lg" href="{{ url_for('get_city', city_name='Mandalay') }}">Mandalay</a>-->
+        </section>
+    </div>
+</div>
+
+
+{% include "footer.html" %}

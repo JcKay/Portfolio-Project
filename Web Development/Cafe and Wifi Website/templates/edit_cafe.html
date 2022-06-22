@@ -1,0 +1,150 @@
+{% include "header.html" %}
+
+<main class="">
+    <!--     UNAUTHORIZED        -->
+    {% if auth_req %}
+    <h1 class="contact-h1">Forbidden</h1>
+    <p class="lead">Please make sure you have access to edit.</p>
+    <p class="lead flash-p">You can only edit Cafe that you Suggest.</p>
+
+    <!--     UNAUTHORIZED        -->
+    {% elif no_delete %}
+    <h1 class="contact-h1">Forbidden</h1>
+    <p class="lead">Please make sure you have access to DELETE.</p>
+    <p class="lead flash-p">You can only DELETE Cafe that you Suggest.</p>
+
+    <!--     AUTHORIZED        -->
+    {% else %}
+    <h1 class="contact-h1">Edit {{ data.name }}</h1>
+    <p class="lead">Let freelancers and remote workers know about latest update.</p>
+    <hr>
+
+    <!--    CREATE FORM     -->
+    <form class="add-Form-Size" id="contactForm" action="{{ url_for('edit_cafe', cafe_id=data.id) }}" method="post"
+          novalidate>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- NAME INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-name">Cafe Name:</label>
+                        <input id="edit-name" name="name" class="form-control" type="text" value="{{ data.name }}"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- MAP URL INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-map_url">Map URL:</label>
+                        <input id="edit-map_url" name="map_url" class="form-control"
+                               placeholder="https://goo.gl/maps/..."
+                               type="url" value="{{ data.map_url }}"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- ADDRESS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-address">Address:</label>
+                        <input id="edit-address" name="address" class="form-control" type="text"
+                               value="{{ data.address }}"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- TOWNSHIP  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-township">Township:</label>
+                        <input id="edit-township" name="township" class="form-control" type="text"
+                               value="{{ data.township }}"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- CITY  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-city">City:</label>
+                        <input id="edit-city" name="city" class="form-control" type="text" value="{{ data.city }}"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- SEATS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-seats">Seats?</label>
+                        <select id="edit-seats" name="seats" class="form-control">
+                            <option value="less than 10 tables">less than 10 tables</option>
+                            <option value="between 10 and 30 tables">between 10 and 30 tables</option>
+                            <option value="more than 30 tables">more than 30 tables</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- WIFI  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-wifi">Is there Wifi?</label>
+                        <select id="edit-wifi" name="wifi" class="form-control">
+                            <option value="No">No</option>
+                            <option value="Yes, but unstable">Yes, but unstable</option>
+                            <option value="It's very reliable">It's very reliable</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- SOCKETS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-sockets">Is there power sockets?</label>
+                        <select id="edit-sockets" name="sockets" class="form-control">
+                            <option value="<10% of seats have power sockets"><10% of seats have power sockets</option>
+                            <option value="30-50% of seats have power sockets">30-50% of seats have power sockets
+                            </option>
+                            <option value="<50% of seats have power sockets"><50% of seats have power sockets</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- CALLS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-call">Is it quiet?</label>
+                        <select id="edit-call" name="can_take_calls" class="form-control">
+                            <option value="No">No</option>
+                            <option value="Depends">Depends</option>
+                            <option value="Definitely!">Definitely!</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- CALLS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-restroom">Is there a restroom?</label>
+                        <select id="edit-restroom" name="restroom" class="form-control">
+                            <option value="No">No</option>
+                            <option value="Yes, but inconvenient">Yes, but inconvenient</option>
+                            <option value="Definitely, It's clean and easily accessible!">Definitely, It's clean and
+                                easily accessible!
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- CARDS INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="cards">Cards support?</label>
+                        <select id="cards" name="cards" class="form-control">
+                            <option value="No">No</option>
+                            <option value="Only some cards or amounts">Only some cards or amounts</option>
+                            <option value="Definitely!">Definitely!</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- COFFEE PRICE  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="edit-coffee">Coffee Price?</label>
+                        <input id="edit-coffee" name="coffee_price" class="form-control" placeholder="1800 mmk"
+                               type="text" value="{{ data.coffee_price }}"
+                               required>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group my-4">
+                <button type="submit" class="btn btn-yellow btn-outline">Submit</button>
+            </div>
+        </div>
+    </form>
+    {% endif %}
+</main>
+
+{% include "footer.html" %}

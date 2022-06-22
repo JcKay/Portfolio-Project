@@ -1,0 +1,50 @@
+{% include "header.html" %}
+
+
+<main class="">
+    <h1 class="contact-h1">GIVE US A SHOUT</h1>
+    <p class="lead">
+        USE THE FORM BELOW TO DROP US AN E-MAIL.
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p class="contactme-p">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    <hr>
+
+    <!--    CREATE FORM     -->
+    <form class="contact-Form-Size" id="contactForm" action="{{ url_for('contactme') }}" method="post" novalidate>
+        <div class="container">
+            <div class="form-group mb-4">
+                <label for="name">Your Name:</label>
+                <input id="name" name="name" class="form-control" placeholder="Example: Mr. John" type="text"
+                       required>
+            </div>
+            <div class="form-group mb-4">
+                <label for="mozEmail">E-mail address:</label>
+                <input id="mozEmail" type="email" name="email" class="form-control"
+                       placeholder="Example: example@gmail.com"
+                       required>
+            </div>
+            <div class="form-group mb-4">
+                <label for="subject">Subject:</label>
+                <input id="subject" name="subject" class="form-control" type="text" required>
+            </div>
+            <div class="form-group mb-4">
+                <label for="details">Details:</label>
+                <textarea id="details" name="body" class="form-control" rows="4"
+                          placeholder="Please write your question or a description of the problem you're trying to solve here."
+                          required></textarea>
+            </div>
+            <div class="form-group my-4">
+                <button type="submit" class="btn btn-yellow btn-outline">Submit</button>
+            </div>
+        </div>
+    </form>
+</main>
+
+
+{% include "footer.html" %}

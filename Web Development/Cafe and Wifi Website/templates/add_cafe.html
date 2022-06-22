@@ -1,0 +1,129 @@
+{% include "header.html" %}
+
+<main class="">
+    <h1 class="contact-h1">ADD NEW PLACE</h1>
+    <p class="lead">Let freelancers and remote workers know about new place.</p>
+    <hr>
+
+    <!--    CREATE FORM     -->
+    <form class="add-Form-Size" id="contactForm" action="{{ url_for('add_cafe') }}" method="post" novalidate>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- NAME INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="name">Cafe Name:</label>
+                        <input id="name" name="name" class="form-control" type="text"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- MAP URL INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="map_url">Map URL:</label>
+                        <input id="map_url" name="map_url" class="form-control" placeholder="https://goo.gl/maps/..."
+                               type="url"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- ADDRESS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="address">Address:</label>
+                        <input id="address" name="address" class="form-control" type="text"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- TOWNSHIP  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="township">Township:</label>
+                        <input id="township" name="township" class="form-control" type="text"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- CITY  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="city">City:</label>
+                        <input id="city" name="city" class="form-control" type="text"
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- SEATS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="seats">Seats?</label>
+                        <select id="seats" name="seats" class="form-control">
+                            <option value="less than 10 tables">less than 10 tables</option>
+                            <option value="between 10 and 30 tables">between 10 and 30 tables</option>
+                            <option value="more than 30 tables">more than 30 tables</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- SEATS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="wifi">Is there Wifi?</label>
+                        <select id="wifi" name="wifi" class="form-control">
+                            <option value="No">No</option>
+                            <option value="Yes, but unstable">Yes, but unstable</option>
+                            <option value="It's very reliable">It's very reliable</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- SOCKETS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="sockets">Is there power sockets?</label>
+                        <select id="sockets" name="sockets" class="form-control">
+                            <option value="<10% of seats have power sockets"><10% of seats have power sockets</option>
+                            <option value="30-50% of seats have power sockets">30-50% of seats have power sockets
+                            </option>
+                            <option value="<50% of seats have power sockets"><50% of seats have power sockets</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- CALLS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="call">Is it quiet?</label>
+                        <select id="call" name="can_take_calls" class="form-control">
+                            <option value="No">No</option>
+                            <option value="Depends">Depends</option>
+                            <option value="Definitely!">Definitely!</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- CALLS  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="restroom">Is there a restroom?</label>
+                        <select id="restroom" name="restroom" class="form-control">
+                            <option value="No">No</option>
+                            <option value="Yes, but inconvenient">Yes, but inconvenient</option>
+                            <option value="Definitely, It's clean and easily accessible!">Definitely, It's clean and
+                                easily accessible!
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- CARDS INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="cards">Cards support?</label>
+                        <select id="cards" name="cards" class="form-control">
+                            <option value="No">No</option>
+                            <option value="Only some cards or amounts">Only some cards or amounts</option>
+                            <option value="Definitely!">Definitely!</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6"><!-- COFFEE PRICE  INPUT -->
+                    <div class="form-group mb-4">
+                        <label for="coffee">Coffee Price?</label>
+                        <input id="coffee" name="coffee_price" class="form-control" placeholder="1800 mmk" type="text"
+                               required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group my-4">
+                <button type="submit" class="btn btn-yellow btn-outline">Submit</button>
+            </div>
+        </div>
+    </form>
+</main>
+{% include "footer.html" %}

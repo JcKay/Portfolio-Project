@@ -1,0 +1,41 @@
+{% include "header.html" %}
+
+<h1 class="login-h1">Register</h1>
+<hr style="width:200px; margin-left: auto; margin-right: auto;">
+<form class="contactForm justify-content-center" action="{{ url_for('register') }}" method="post">
+    <!-- Name input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="registerName">Name</label>
+        <input name="name" type="text" id="registerName" class="form-control"/>
+    </div>
+
+    <!-- Username input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="registerUsername">Username (Display Name)</label>
+        <input name="username" type="text" id="registerUsername" class="form-control"/>
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="registerEmail">Email</label>
+        <input name="email" type="email" id="registerEmail" class="form-control"/>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="registerPassword">Password</label>
+        <input name="password" type="password" id="registerPassword" class="form-control"/>
+    </div>
+
+    <!-- Repeat Password input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+        <input name="repeat_password" type="password" id="registerRepeatPassword" class="form-control"/>
+    </div>
+
+    <button type="submit" class="btn btn-yellow btn-block mb-3">Sign in</button>
+
+</form>
+
+
+{% include "footer.html" %}
